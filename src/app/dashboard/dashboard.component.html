@@ -1,0 +1,136 @@
+<div class="container-fluid page">
+  <div class="page__box p-3 mt-2">Dashboard</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute text-center">
+    </div>
+    <mat-tab-group>
+      <mat-tab label="Create Shop">
+        <form [formGroup]="exform" (ngSubmit)="registerprocess()">
+          <div class="form-group">
+            <label class="col-form-label">Shop name:</label>
+            <input formControlName="shop_name" type="text" class="form-control" required>
+            <small *ngIf="shop_name?.invalid && shop_name?.touched" class="text-danger">shop name is Required</small>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Opening time:</label>
+            <input formControlName="opening_time" type="text" class="form-control" required>
+            <small *ngIf="opening_time?.invalid && opening_time?.touched" class="text-danger">opening time is
+              Required</small>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Closing time:</label>
+            <input formControlName="closing_time" type="text" class="form-control" required>
+            <small *ngIf="closing_time?.invalid && closing_time?.touched" class="text-danger">Closing time is
+              Required</small>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Pincode:</label>
+            <input formControlName="pincode" type="number" class="form-control" required>
+            <small *ngIf="pincode?.invalid && pincode?.touched" class="text-danger"> Pincode is Required</small>
+          </div><br>
+          <div class="form-group">
+            <label class="col-form-label">Address</label>
+            <input formControlName="address" type="text" class="form-control" required>
+            <small *ngIf="address?.invalid && address?.touched" class="text-danger"> Address is Required</small>
+          </div><br>
+          <div class="form-group">
+            <label class="col-form-label">Owner mobile</label>
+            <input formControlName="owner_mobile" type="number" class="form-control" required>
+            <small *ngIf="owner_mobile?.invalid && owner_mobile?.touched" class="text-danger"> Owner mobile is
+              Required</small>
+          </div><br>
+          <div class="form-group">
+            <label class="col-form-label">Owner name</label>
+            <input formControlName="owner_name" type="text" class="form-control" required>
+            <small *ngIf=" owner_name?.invalid && owner_name?.touched" class="text-danger"> Owner name is
+              Required</small>
+          </div><br>
+          <div class="form-group">
+            <label class="col-form-label">Password</label>
+            <input formControlName="password" type="password" class="form-control" required>
+            <small *ngIf="password?.invalid && password?.touched" class="text-danger"> Password is Required</small>
+          </div><br>
+          <div class="form-group">
+            <label class="col-form-label">Password confirm</label>
+            <input formControlName="passwordConfirm" type="text" class="form-control" required>
+            <small *ngIf="passwordConfirm?.invalid && passwordConfirm?.touched" class="text-danger"> Password confirm is
+              Required</small>
+          </div><br>
+          <div class="form-group">
+            <label class="col-form-label">Image</label>
+            <input formControlName="image" type="text" class="form-control" required>
+            <small *ngIf="image?.invalid && image?.touched" class="text-danger"> Image is Required</small>
+          </div><br>
+          <div class="form-group">
+            <label class="col-form-label">Latitude</label>
+            <input formControlName="lat" type="number" class="form-control" required>
+            <small *ngIf="lat?.invalid && lat?.touched" class="text-danger"> Latitude is Required</small>
+          </div><br>
+          <div class="form-group">
+            <label class="col-form-label">Longitude</label>
+            <input formControlName="long" type="number" class="form-control" required>
+            <small *ngIf="long?.invalid && long?.touched" class="text-danger"> Longitude is Required</small>
+          </div><br>
+          <button type="submit" class="btn btn-primary">Register</button>
+
+        </form>
+      </mat-tab>
+      <mat-tab label="Shop List"><br>
+        <form [formGroup]="subform" (ngSubmit)="clicksub()">
+          <div class="form-group">
+            <label class="col-form-label"> Pincode: </label>
+            <input formControlName="pincode" type="number" class="form-control" placeholder="pincode" required>
+                
+          </div><br>
+          <button type="submit" class="btn btn-primary">Enter</button>
+        </form><br>
+        <table class="table table-bordered table-striped">
+          <thead class="head">
+            <tr>
+              <th scope="col">Suspend</th>
+              <th scope="col">Id</th>
+              <th scope="col">shop name</th>
+              <th scope="col">opening time</th>
+              <th scope="col">closing time</th>
+              <th scope="col">pincode</th>
+              <th scope="col">Address</th>
+              <th scope="col">Owner mobile</th>
+              <th scope="col">Owner name</th>
+              <th scope="col">Password</th>
+              <th scope="col">password Confirm</th>
+              <th scope="col">Image</th>
+              <th scope="col">Lat</th>
+              <th scope="col">Long</th>
+              <th scope="col">CreatedAt</th>
+              <th scope="col">UpdatedAt</th>
+              <th scope="col">--V</th> 
+            </tr>
+          </thead>
+          <tbody class="body">
+          <tr *ngFor="let pincodeval of pincodearray" scope="row">
+            <td>{{pincodeval.suspend}}</td>
+            <td>{{pincodeval._id}}</td>
+            <td>{{pincodeval.shop_name}}</td>
+            <td>{{pincodeval.opening_time}}</td>
+            <td>{{pincodeval.closing_time}}</td>
+            <td>{{pincodeval.pincode}}</td>
+            <td>{{pincodeval.address}}</td>
+            <td>{{pincodeval.owner_mobile}}</td>
+            <td>{{pincodeval.owner_name}}</td>
+            <td>{{pincodeval.password}}</td>
+            <td>{{pincodeval.passwordConfirm}}</td>
+            <td>{{pincodeval.image}}</td>
+            <td>{{pincodeval.lat}}</td>
+            <td>{{pincodeval.long}}</td>
+            <td>{{pincodeval.createdAt}}</td>
+            <td>{{pincodeval.updatedAt}}</td>
+            <td>{{pincodeval.__v}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+</div>

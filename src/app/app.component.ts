@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dash-demo';
+  sideBarOpen = true;
+
+ngOninit() {}
+sideBarToggler(){
+  this.sideBarOpen = !this.sideBarOpen;
+}
+
+
+
+
 }
